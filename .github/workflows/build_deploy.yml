@@ -13,7 +13,10 @@ jobs:
     services:
       mysql:
         image: mysql
-
+        env:
+          DB_DATABASE: company
+          DB_USER: root
+          DB_PASSWORD: Gwada97195
         ports:
           - 3306:3306
     
