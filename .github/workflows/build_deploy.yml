@@ -1,5 +1,6 @@
 name: Build and Deploy
 
+
 on:
   push:
     branches: [main]
@@ -22,7 +23,7 @@ jobs:
           MYSQL_PASSWORD: Gwada97195
           MYSQL_DATABASE: company
           MYSQL_ROOT_PASSWORD: Gwada97195
-        options:
+        options: >-
           --name=mysql-master
           --health-cmd="mysqladmin ping"
           --health-interval=10s
