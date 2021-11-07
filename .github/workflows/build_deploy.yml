@@ -13,7 +13,7 @@ jobs:
     services:
       mysql:
         image: mysql
-        environment:
+        env:
           MYSQL_DATABASE: company
           MYSQL_USER: root
           MYSQL_PASSWORD: Gwada97195
