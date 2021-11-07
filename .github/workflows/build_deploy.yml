@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: [main]
 
-defaults:
-  run:
-    working-directory: ./mysql
 
 
 jobs:
@@ -39,4 +36,4 @@ jobs:
       - run: npm test
         env:
           MYSQL_HOST: localhost
-          MYSQL_PORT: ${{ job.services.mysql.ports[3306] }}
+          MYSQL_PORT: 3306
