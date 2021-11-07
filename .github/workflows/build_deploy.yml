@@ -14,9 +14,10 @@ jobs:
       mysql:
         image: mysql
         env:
-          DB_DATABASE: company
-          DB_USER: root
-          DB_PASSWORD: Gwada97195
+          MYSQL_DATABASE: company
+          MYSQL_USER: root
+          MYSQL_PASSWORD: Gwada97195
+          MYSQL_ROOT_PASSWORD: Gwada97195
         ports:
           - 3306:3306
     
