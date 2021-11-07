@@ -35,12 +35,12 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
 
-      - uses: actions/cache@v2
-      - name: Verify MySQL connection from host
+      - name: Set UP MySQL
         run: |
-          sudo apt-get install -y mysql-client libmysqlclient-dev
-          mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports[3306] }} -uroot -proot -e "SHOW GRANTS FOR 'root'@'localhost'"
-          mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports[3306] }} -uroot -proot mysql
+          sudo /etc/init.d/mysql start
+          mysql -e 'CREATE DATABASE ${{ env.MYSQL_DATABASE }};' -u${{ env.MYSQL_USER }} -p${{ env.MYSQL_PASSWORD }}
+
+
       - run: npm test
         env:
           MYSQL_HOST: localhost
