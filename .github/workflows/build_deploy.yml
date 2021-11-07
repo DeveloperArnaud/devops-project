@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     
     services:
-      mysql-master:
+      mysql:
         image: mysql:5.7
         ports:
           - 3306/tcp
@@ -29,7 +29,7 @@ jobs:
           MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
           MYSQL_ROOT_PASSWORD: ${{ env.MYSQL_PASSWORD }}
         options: >-
-          --name=mysql-master
+          --name=mysql
           --health-cmd="mysqladmin ping"
           --health-interval=10s
           --health-timeout=5s
