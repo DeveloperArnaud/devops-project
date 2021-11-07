@@ -12,14 +12,14 @@ jobs:
     
     services:
       mysql:
-        image: mysql:latest
-        ports:
-          - 3306:3306
+        image: mysql
         environment:
           MYSQL_DATABASE: company
           MYSQL_USER: root
           MYSQL_PASSWORD: Gwada97195
           MYSQL_ROOT_PASSWORD: Gwada97195
+        ports:
+          - 3306:3306
     
     strategy:
       matrix:
