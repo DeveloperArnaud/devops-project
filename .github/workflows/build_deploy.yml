@@ -13,14 +13,21 @@ jobs:
     runs-on: ubuntu-latest
     
     services:
-      mysql:
-        image: mysql:latest
-        env:
-          MYSQL_USER: root
-          MYSQL_PASSWORD: Gwada97195
-          MYSQL_DATABASE: company
+      mysql-master:
+        image: mysql:5.7
         ports:
-          - 3306:3306
+          - 3306/tcp
+        env:
+          MYSQL_USER: ${{ env.DB_USER }}
+          MYSQL_PASSWORD: ${{ env.DB_PASSWORD }}
+          MYSQL_DATABASE: ${{ env.DB_DATABASE }}
+          MYSQL_ROOT_PASSWORD: ${{ env.DB_PASSWORD }}
+        options:
+          --name=mysql-master
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
     
     strategy:
       matrix:
@@ -34,14 +41,4 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npm run build --if-present
-
-      - name: Set UP MySQL
-        run: |
-          sudo /etc/init.d/mysql start
-          mysql -e 'CREATE DATABASE ${{ env.MYSQL_DATABASE }};' -u${{ env.MYSQL_USER }} -p${{ env.MYSQL_PASSWORD }}
-
-
       - run: npm test
-        env:
-          MYSQL_HOST: localhost
-          MYSQL_PORT: 3306
