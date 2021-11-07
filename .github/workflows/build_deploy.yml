@@ -25,15 +25,7 @@ jobs:
       matrix:
         node-versions: [10.x]
     
-    steps:
-      - uses: actions/checkout@v1
-      - name: Verify MySQL connection
-        env:
-          PORT: 3306
-        run: |
-          while ! mysqladmin ping -h"127.0.0.1" -P"$PORT" --silent; do
-            sleep 1
-          done     
+    steps:  
       - run: npm ci
       - run: npm run build --if-present
       - run: npm test
