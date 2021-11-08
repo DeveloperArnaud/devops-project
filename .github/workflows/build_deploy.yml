@@ -26,10 +26,10 @@ jobs:
         volumes:
           - ./docker/company-db.sql:/docker-entrypoint-initdb.d/testing-db.sql
         environment:
-          MYSQL_ROOT_PASSWORD: "secret"
-          MYSQL_DATABASE: "company"
-          MYSQL_USER: "nono"
-          MYSQL_PASSWORD: "secret"
+          MYSQL_ROOT_PASSWORD: secret
+          MYSQL_DATABASE: company
+          MYSQL_USER: nono
+          MYSQL_PASSWORD: secret
         networks:
           - devops-project_default
     
