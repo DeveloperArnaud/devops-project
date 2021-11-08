@@ -7,6 +7,7 @@ var mySqlConnection = mysql.createConnection({
     user: config.mysql.user || process.env.DB_USER,
     password: config.mysql.password || process.env.DB_PASSWORD,
     database: config.mysql.database || process.env.DB_DATABASE,
+    port: 3000,
     multipleStatements: true
 })
 
