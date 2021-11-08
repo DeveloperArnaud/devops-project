@@ -30,11 +30,6 @@ jobs:
           MYSQL_USER: "nono"
           MYSQL_PASSWORD: "secret"
           
-        volumes:
-          - ./docker/company-db.sql:/docker-entrypoint-initdb.d/testing-db.sql
-        networks:
-          - devops-project_default
-    
     strategy:
       matrix:
         node-versions: [10.x]
