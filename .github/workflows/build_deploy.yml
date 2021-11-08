@@ -18,6 +18,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql_server
+        ports:
+          - 3000:3000
     
     strategy:
       matrix:
@@ -33,5 +38,4 @@ jobs:
       - run: npm run build --if-present
       - name: Build the stack
         run: docker-compose up
-      - name: Test
       - run: npm test
