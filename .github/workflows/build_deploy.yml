@@ -1,11 +1,4 @@
 name: Build and Deploy
-env:
-    MYSQL_USER: nono
-    MYSQL_PASSWORD: Gwada97195
-    MYSQL_DATABASE: company
-    MYSQL_ROOT_PASSWORD: Gwada97195
-    MYSQL_HOST: mysql_server
-
 
 on:
   push:
