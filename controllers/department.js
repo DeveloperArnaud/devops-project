@@ -1,15 +1,13 @@
 
 const mySqlConnection = require('../connection')
 
-const employeeController = {
+const departmentController = {
     get : (req, res) =>  {
         mySqlConnection.query('SELECT * FROM DEPT', (err, rows, field) => {
             if(!err) {
-                res.send(rows)
-                console.log(rows)
+                return res.json(rows)
             } else {
-                res.send(null)
-                console.log(err)
+                return res.json(null)
             } 
         })
     },
@@ -17,11 +15,9 @@ const employeeController = {
     getById : (req, res) => {
         mySqlConnection.query('SELECT * FROM DEPT WHERE DID = ?',[req.params.id], (err, rows, field) => {
             if(!err){
-                res.send(rows)
-                console.log(rows)
+                return res.json(rows)
             } else {
-                res.send(null)
-                console.log(err)
+                return res.json(null)
             }
         })
     }
@@ -29,4 +25,4 @@ const employeeController = {
     
 }
 
-module.exports = employeeController;
+module.exports = departmentController;

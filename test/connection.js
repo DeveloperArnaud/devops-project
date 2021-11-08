@@ -8,7 +8,8 @@ describe('Configuration', () => {
         connection = require('../connection')
     })
 
-    it('should connect to MySQL', () =>  {
-        expect(connection.state).to.eql("connected")
+    it('should connect to MySQL', (done) =>  {
+        expect(connection.state).to.eql("authenticated")
+        done()
     } )
 })

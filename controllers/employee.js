@@ -5,11 +5,9 @@ const employeeController = {
     get : (req, res) =>  {
         mySqlConnection.query('SELECT * FROM EMP', (err, rows, field) => {
             if(!err) {
-                res.send(rows)
-                console.log(rows)
+                return res.json(rows)
             } else {
-                res.send(null)
-                console.log(err)
+                return res.json(null)
             } 
         })
     },
@@ -17,13 +15,14 @@ const employeeController = {
     getById : (req, res) => {
         mySqlConnection.query('SELECT * FROM EMP WHERE EID = ?',[req.params.id], (err, rows, field) => {
             if(!err){
-                res.send(rows)
-                console.log(rows)
+                return res.json(rows)
             } else {
-                console.log(err)
+                return res.json(null)
+
             }
         })
     }
+
 }
 
 module.exports = employeeController;
