@@ -18,17 +18,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    services:
-      mysql:
-        image: devops-project_mysql_server_1
-        ports:
-          - 3000:3000
-        env:
-          MYSQL_USER: nono
-          MYSQL_PASSWORD: secret
-          MYSQL_DATABASE: company
-          MYSQL_ROOT_PASSWORD: secret
-    
     strategy:
       matrix:
         node-versions: [10.x]
