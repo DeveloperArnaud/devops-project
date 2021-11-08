@@ -22,12 +22,12 @@ jobs:
       mysql:
         image: mysql:8.0
         ports:
-          - 3000:3000
+          - 3306:3306
         env:
-          MYSQL_USER: ${{ env.MYSQL_USER }}
-          MYSQL_PASSWORD: ${{ env.MYSQL_PASSWORD }}
-          MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
-          MYSQL_ROOT_PASSWORD: ${{ env.MYSQL_PASSWORD }}
+          MYSQL_USER: nono
+          MYSQL_PASSWORD: secret
+          MYSQL_DATABASE: company
+          MYSQL_ROOT_PASSWORD: secret
     
     strategy:
       matrix:
