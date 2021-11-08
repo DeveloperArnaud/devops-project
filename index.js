@@ -111,6 +111,6 @@ app.use('/departments', departmentRoutes)
 
 
 
-app.listen(3306)
+app.listen(3000)
 
 module.exports = app
