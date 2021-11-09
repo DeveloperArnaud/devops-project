@@ -14,6 +14,10 @@ Router.get('/:id', (req, res) => {
     employeeController.getById(req, res)
 })
 
+Router.post('/create-emp', (req, res) => {
+    employeeController.create(req, res)
+})
+
 
 
 

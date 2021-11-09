@@ -1,8 +1,8 @@
 {
     "mysql": {
-        "host": "mysql_server",
-        "user": "nono",
-        "password": "secret",
+        "host": "mysql_application",
+        "user": "root",
+        "password": "Gwada97195",
         "database": "company"
     }
 }

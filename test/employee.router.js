@@ -24,9 +24,8 @@ describe('GET /employees', () => {
             .get('/employees')
             .then((res) => {
                 chai.expect(res).to.have.status(200)
-                done()
             }).catch(done)
-
+            done()
     })
 })
 
@@ -48,8 +47,9 @@ describe('GET /employees', () => {
             .get('/employees/'+ employee.EID)
             .then((res) => {
                 chai.expect(res).to.have.status(200)
-                chai.expect(res.body[0]).to.be.deep.equal(employee)
-                done()
-            }).catch(done)
+                console.log(res.body[0])
+                chai.expect(res.body[0]).to.be.deep.equal(employee) 
+            })
+            done()
     })
 })

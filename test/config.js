@@ -4,13 +4,14 @@ const config = require('../conf/default')
 describe('Configuration', () => {
     let configTest = {
         "mysql": {
-            "host": "localhost",
+            "host": "mysql_application",
             "user": "root",
             "password": "Gwada97195",
             "database": "company"
         }
     }
+    
     it('load configuration for mySQL', () =>  {
-        expect(config.mysql).to.eql(configTest.mysql)
+        expect(config.mysql).to.be.deep.equal(configTest.mysql)
     } )
 })

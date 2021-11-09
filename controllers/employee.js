@@ -1,27 +1,30 @@
 
-const mySqlConnection = require('../connection')
+const { render } = require('..');
+const mySqlPool = require('../connection')
 
 const employeeController = {
-    get : (req, res) =>  {
-        mySqlConnection.query('SELECT * FROM EMP', (err, rows, field) => {
-            if(!err) {
-                return res.json(rows)
-            } else {
-                return res.json(null)
-            } 
-        })
+
+    get : async (req, res) =>  {
+        const query = "SELECT * FROM EMP";
+        const result = await mySqlPool.execute(query);
+        return res.send(result[0]);
+        
     },
 
-    getById : (req, res) => {
-        mySqlConnection.query('SELECT * FROM EMP WHERE EID = ?',[req.params.id], (err, rows, field) => {
-            if(!err){
-                return res.json(rows)
-            } else {
-                return res.json(null)
+    getById : async (req, res) =>  {
+        const query = "SELECT * FROM EMP WHERE EID = ?";
+        const result = await mySqlPool.execute(query, [req.params.id]);
+        return res.send(result[0]);
+    },
 
-            }
-        })
+    create: async(req, res) => {
+        /**
+         *     DID     int,
+    DNAME   varchar(20) not null,
+    DLOC    varchar(30) not null,
+         */
     }
+
 
 }
 

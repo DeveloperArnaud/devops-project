@@ -12,4 +12,8 @@ Router.get('/:id',(req, res) => {
     departmentController.getById(req, res)
 });
 
+Router.post('/create-dept', (req, res) => {
+    departmentController.create(req, res)
+})
+
 module.exports = Router;

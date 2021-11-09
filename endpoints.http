@@ -1,0 +1,19 @@
+POST http://localhost:3000/departments/create-dept
+content-type: application/json
+
+{
+    "did": 10,
+    "dname":  "ACCOUNTING",
+    "dloc": "NEW-YORK"
+}
+
+###
+
+GET http://localhost:3000/departments
+
+###
+
+GET http://localhost:3000/departments/10
+
+###
+

@@ -5,7 +5,13 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "test": "./node_modules/.bin/mocha test/*.js"
+    "test": "./node_modules/.bin/mocha test/*.js --timeout 50000",
+    "test-command": "node -v",
+    "create-database-company": "node controllers/create/create-database-company.js",
+    "create-dept-table": "node controllers/create/create-dept-table.js",
+    "create-emp-table": "node controllers/create/create-emp-table.js",
+    "insert-dept-data": "node controllers/insertData/insert-data-dept.js",
+    "insert-dept-emp": "node controllers/insertData/insert-data-emp.js"
   },
   "author": "",
   "license": "ISC",
