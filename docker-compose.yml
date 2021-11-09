@@ -1,6 +1,23 @@
 version: '3'
 
 services:
+
+    mysql_application:
+        container_name: mysql_application
+        image: mysql:8.0
+        volumes:
+          - ./init:/docker-entrypoint-initdb.d
+        expose:
+            - "3306"
+        ports:
+            - 3306:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            MYSQL_HOST: ${MYSQL_HOST}
+            MYSQL_ROOT_HOST: '%'
+    
     backend_application:
         container_name: backend_application
         image: node:14
@@ -23,24 +40,11 @@ services:
           bash -c " cd /app 
           && npm i
           && npm run test"
-    mysql_application:
-        container_name: mysql_application
-        image: mysql:8.0
-        restart: always
-        volumes:
-          - ./init:/docker-entrypoint-initdb.d
-        expose:
-            - "3306"
-        ports:
-            - 3306:3306
-        environment:
-            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-            MYSQL_DATABASE: ${MYSQL_DATABASE}
-            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-            MYSQL_HOST: ${MYSQL_HOST}
-            MYSQL_ROOT_HOST: '%'
+        
         depends_on:
-            - backend_application
+            - mysql_application
+
+
 
 
 
