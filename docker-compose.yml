@@ -24,7 +24,9 @@ services:
           bash -c " cd /app 
           && npm i
           && npm run test"
-
+    
+        depends_on:
+            - mysql_application
 
     mysql_application:
         container_name: mysql_application
