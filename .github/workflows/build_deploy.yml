@@ -24,11 +24,7 @@ jobs:
           
           options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
           env:
-            MYSQL_USER: root
-            MYSQL_PASSWORD: Gwada97195
-            MYSQL_DATABASE: company
             MYSQL_ROOT_PASSWORD: Gwada97195
-
     
     steps:  
       - uses: actions/checkout@v2
@@ -38,4 +34,4 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - name: Run test in container
-        run: mysql -h localhost --port 3306 -u root -P 
+        run: mysql -h localhost --port 3306 -u root -ppassword 
