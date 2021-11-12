@@ -18,16 +18,9 @@ jobs:
     services:
       mysql_application:
           image: mysql:8.0
-
           ports:
             - 3306:3306
-          env:
-            MYSQL_USER: root
-            MYSQL_ROOT_PASSWORD: Gwada97195
-            MYSQL_DATABASE: company
-            MYSQL_PASSWORD: Gwada97195
-            MYSQL_HOST: localhost
-            MYSQL_ROOT_HOST: '%'
+
 
     
     steps:  
