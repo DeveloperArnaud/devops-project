@@ -25,7 +25,7 @@ jobs:
             MYSQL_ROOT_PASSWORD: Gwada97195
             MYSQL_DATABASE: company
             MYSQL_PASSWORD: Gwada97195
-            MYSQL_HOST: mysql_application
+            MYSQL_HOST: localhost
             MYSQL_ROOT_HOST: '%'
 
     
