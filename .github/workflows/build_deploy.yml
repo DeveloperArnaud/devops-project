@@ -26,7 +26,6 @@ jobs:
           env:
             MYSQL_ROOT_PASSWORD: Gwada97195
             MYSQL_DATABASE: company
-            MYSQL_HOST: localhost
 
     
     steps:  
@@ -37,4 +36,4 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - name: Run test in container
-        run: npm run test
+        run: mysql -h 127.0.0.1 --port 3306 -u root -ppassword 
