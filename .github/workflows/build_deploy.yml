@@ -22,8 +22,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-      - run: npm run build --if-present
-      - name: Run test in container
+      - name: Run tests in container
         run: |
          docker compose up -d
-         docker logs backend_application
+         docker logs "${{ job.services.<service_id>.id }}"
