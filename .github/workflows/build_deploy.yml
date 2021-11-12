@@ -22,17 +22,16 @@ jobs:
           ports:
             - 3306:3306
           
-          options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
           env:
             MYSQL_ROOT_PASSWORD: Gwada97195
-            MYSQL_DATABASE: company
-    
+            MYSQL_DATABASE: companyy
+          options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
     steps:  
       - uses: actions/checkout@v2
+      - run: mysql -h 127.0.0.1 --port 3306 -u root -ppassword -e 'CREATE DATABASE IF NOT EXISTS company;'
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-      - name: Run test in container
-        run: mysql -h localhost --port 3306 -u root -ppassword
