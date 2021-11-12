@@ -16,7 +16,7 @@ jobs:
         node-versions: [10.x]
     
     services:
-        mysql_application:
+      mysql_application:
         container_name: mysql_application
         image: mysql:8.0
         volumes:
