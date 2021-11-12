@@ -15,23 +15,20 @@ jobs:
       matrix:
         node-versions: [10.x]
     
-    
     services:
       mysql_application:
-      container_name: mysql_application
-      image: mysql:8.0
-      volumes:
-        - ./init:/docker-entrypoint-initdb.d
-      expose:
-          - "3306"
-      ports:
-          - 3306:3306
-      environment:
-          MYSQL_ROOT_PASSWORD: Gwada97195
-          MYSQL_DATABASE: company
-          MYSQL_PASSWORD: Gwada97195
-          MYSQL_HOST: mysql_application
-          MYSQL_ROOT_HOST: '%'
+          image: mysql:8.0
+          volumes:
+            - ./init:/docker-entrypoint-initdb.d
+          ports:
+            - 3306:3306
+          env:
+            MYSQL_ROOT_PASSWORD: Gwada97195
+            MYSQL_DATABASE: company
+            MYSQL_PASSWORD: Gwada97195
+            MYSQL_HOST: mysql_application
+            MYSQL_ROOT_HOST: '%'
+
     
     steps:  
       - uses: actions/checkout@v2
