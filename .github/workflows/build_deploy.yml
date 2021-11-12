@@ -26,6 +26,7 @@ jobs:
           env:
             MYSQL_ROOT_PASSWORD: Gwada97195
             MYSQL_DATABASE: company
+            MYSQL_HOST: localhost
 
     
     steps:  
