@@ -14,6 +14,34 @@ jobs:
     strategy:
       matrix:
         node-versions: [10.x]
+
+    services:
+    
+      backend_application:
+        container_name: backend_application
+        image: node:14
+        volumes: 
+            - .:/app
+            - '/app/node_modules'
+        
+        ports:
+            - 3000:3000
+        environment:
+            ENV: dev
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            MYSQL_HOST: ${MYSQL_HOST}
+            MYSQL_ROOT_HOST: '%'
+
+        command: >
+          bash -c " cd /app 
+          && npm i
+          && npm run test"
+    
+        depends_on:
+            - mysql_application
     
     steps:  
       - uses: actions/checkout@v2
@@ -25,4 +53,4 @@ jobs:
       - name: Run tests in container
         run: |
          docker compose up -d
-         docker compose logs backend_application
+         docker logs "${{ job.services.backend_application.id }}"
