@@ -26,4 +26,4 @@ jobs:
       - name: Run test in container
         run: |
          docker compose up -d
-         docker logs -f backend_application
+         docker logs backend_application
