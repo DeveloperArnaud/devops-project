@@ -25,4 +25,4 @@ jobs:
       - name: Run tests in container
         run: |
          docker compose up -d
-         docker logs "${{ job.services.backend_application.id }}"
+         docker compose logs backend_application
