@@ -36,4 +36,4 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - name: Run test in container
-        run: mysql -h 127.0.0.1 -P 3306 -u root -p 
+        run: mysql -h localhost --port 3306 -u root -ppassword 
