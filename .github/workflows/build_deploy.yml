@@ -23,6 +23,7 @@ jobs:
             - 3306:3306
           
           env:
+            CI: true
             MYSQL_ROOT_PASSWORD: Gwada97195
             MYSQL_DATABASE: company
 
