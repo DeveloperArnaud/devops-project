@@ -19,6 +19,12 @@ Router.post('/create-emp', (req, res) => {
 })
 
 
+Router.put('/update-emp/:id', (req, res) => {
+    employeeController.update(req, res)
+})
+
+
+
 
 
 module.exports = Router;

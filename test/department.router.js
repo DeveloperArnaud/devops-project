@@ -22,7 +22,6 @@ describe('GET /departments/:id', () => {
         chai.request(app)
             .get('/departments/'+ dept.DID)
             .then((res) => {
-                console.log(res.body[0])
                 chai.expect(res.body[0]).to.be.deep.equal(dept)
             }).catch(done)
             done();

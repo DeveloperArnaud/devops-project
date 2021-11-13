@@ -17,3 +17,48 @@ GET http://localhost:3000/departments/10
 
 ###
 
+GET http://localhost:3000/employees/7902
+
+###
+POST http://localhost:3000/employees/create-emp
+content-type: application/json
+
+    {
+            "ename" : "API",
+            "job": "Fraude",
+            "mgr" : 7839,
+            "hired": "1980-12-17",
+            "sal": 900,
+            "comm": null,
+            "did": 10
+        } 
+###
+
+DELETE  http://localhost:3000/departments/delete-dept/10
+
+###
+
+PUT http://localhost:3000/departments/update-dept/10
+content-type: application/json
+
+{
+    "dname":  "ACCOUNTING",
+    "dloc": "NEW-YORKS"
+}
+
+###
+PUT http://localhost:3000/employees/update-emp/8001
+content-type : application/json
+
+    {
+            "ename" : "APISE",
+            "job": "Fraude",
+            "mgr" : 7839,
+            "hired": "1980-12-17",
+            "sal": 900,
+            "comm": null,
+            "did": 10
+        } 
+
+
+
