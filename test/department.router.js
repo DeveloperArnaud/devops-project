@@ -4,18 +4,6 @@ const app = require('../index')
 chai.use(chaiHttp);
 
 
-describe('Company REST API', () => {
-    before(() => {
-        client = require('../connection')
-    })
-
-    after(() => {
-        app.close()
-        client.release()
-    })
-})
-
-
 
 describe('GET /departments', () => {
     it('should get all depts', (done) => {
@@ -23,8 +11,8 @@ describe('GET /departments', () => {
             .get('/departments')
             .then((res) => {
                 chai.expect(res).to.have.status(200)
-                done();
-            })
+            }).catch(done)
+            done()
     })
 })
 
@@ -36,7 +24,7 @@ describe('GET /departments/:id', () => {
             .then((res) => {
                 console.log(res.body[0])
                 chai.expect(res.body[0]).to.be.deep.equal(dept)
-                done();
-            })
+            }).catch(done)
+            done();
     })
 })

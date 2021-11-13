@@ -12,7 +12,7 @@ describe('Company REST API', () => {
 
     after(() => {
         app.close()
-        client.release()
+        client.end()
     })
 })
 
@@ -24,8 +24,8 @@ describe('GET /employees', () => {
             .get('/employees')
             .then((res) => {
                 chai.expect(res).to.have.status(200)
-                done();
-            })
+            }).catch(done)
+            done()
     })
 })
 
@@ -47,8 +47,9 @@ describe('GET /employees', () => {
             .get('/employees/'+ employee.EID)
             .then((res) => {
                 chai.expect(res).to.have.status(200)
-                done();
-            })
-
+                console.log(res.body[0])
+                chai.expect(res.body[0]).to.be.deep.equal(employee) 
+            }).catch(done)
+            done()
     })
 })
