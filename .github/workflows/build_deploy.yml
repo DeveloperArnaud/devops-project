@@ -23,7 +23,6 @@ jobs:
             - 3306:3306
           
           env:
-            CI: true
             MYSQL_ROOT_PASSWORD: Gwada97195
             MYSQL_DATABASE: company
 
@@ -39,3 +38,5 @@ jobs:
         cache-dependency-path: '**/package-lock.json'
     - run: npm ci
     - run: npm test
+      env:
+        CI: true
