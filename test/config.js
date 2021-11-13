@@ -11,7 +11,8 @@ describe('Configuration', () => {
         }
     }
     
-    it('load configuration for mySQL', () =>  {
+    it('load configuration for mySQL', (done) =>  {
         expect(config.mysql).to.be.deep.equal(configTest.mysql)
+        done();
     } )
 })
