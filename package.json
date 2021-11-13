@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "test": "./node_modules/.bin/mocha test/*.js --exit",
+    "test": "./node_modules/.bin/mocha test/*.js --timeout 10000 --exit",
     "test-command": "node -v",
     "create-database-company": "node controllers/create/create-database-company.js",
     "create-dept-table": "node controllers/create/create-dept-table.js",
