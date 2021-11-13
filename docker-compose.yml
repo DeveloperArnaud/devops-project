@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+    
+    backend_application:
+        container_name: backend_application
+        image: node:14
+        volumes: 
+            - .:/app
+            - '/app/node_modules'
+        
+        ports:
+            - 3000:3000
+        environment:
+            ENV: dev
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            MYSQL_HOST: mysql_application
+            MYSQL_ROOT_HOST: '%'
+
+        command: >
+          bash -c " cd /app 
+          && npm i
+          && npm run test"
+    
+        depends_on:
+            - mysql_application
+
+    mysql_application:
+        container_name: mysql_application
+        image: mysql:8.0
+        volumes:
+          - ./init:/docker-entrypoint-initdb.d
+        expose:
+            - "3306"
+        ports:
+            - 3306:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            MYSQL_HOST: ${MYSQL_HOST}
+            MYSQL_ROOT_HOST: '%'
+
+
+
+
+

@@ -1,22 +1,17 @@
-var mysql = require('mysql');
-const config = require('./conf/default')
+var mysql = require('mysql2/promise');
+const config = require('./conf/default.json')
 
-var mySqlConnection = mysql.createConnection({
-    host: config.mysql.host,
-    user: config.mysql.user,
-    password: config.mysql.password,
-    database: config.mysql.database,
-    multipleStatements: true
-})
+var mySqlPool = mysql.createPool({
+    host: config.mysql.host || process.env.MYSQL_HOST,
+    user: config.mysql.user || process.env.MYSQL_USER,
+    password: config.mysql.password || process.env.MYSQL_PASSWORD,
+    database: config.mysql.database ||  process.env.MYSQL_DATABASE,
+    port: 3306,
+    waitForConnections: true,
+    connectionLimit: 1,
+    multipleStatements: true,
+    queueLimit: 0,
+    namedPlaceholders: true
+});
 
-
-mySqlConnection.connect((err) => {
-    if(!err) {
-        console.log("Connected")
-    } else {
-        console.log(err)
-    }
-    
-})
-
-module.exports = mySqlConnection;
+module.exports = mySqlPool;

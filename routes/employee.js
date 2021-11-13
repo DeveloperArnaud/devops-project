@@ -1,18 +1,28 @@
 const express = require('express');
 const Router = express.Router();
 const employeeController = require('../controllers/employee')
-const mySqlConnection = require('../connection')
+
 
 
 // Get all employees
-Router.get("/employees", (req, res) => {
+Router.get("/", (req, res) => {
     employeeController.get(req, res);
 });
 
 //Get employee by ID
-Router.get('/employees/:id', (req, res) => {
+Router.get('/:id', (req, res) => {
     employeeController.getById(req, res)
 })
+
+Router.post('/create-emp', (req, res) => {
+    employeeController.create(req, res)
+})
+
+
+Router.put('/update-emp/:id', (req, res) => {
+    employeeController.update(req, res)
+})
+
 
 
 
