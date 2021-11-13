@@ -4,7 +4,7 @@ const config = require('../conf/default')
 describe('Configuration', () => {
     let configTest = {
         "mysql": {
-            "host": "localhost",
+            "host": "127.0.0.&",
             "user": "root",
             "password": "Gwada97195",
             "database": "company"
